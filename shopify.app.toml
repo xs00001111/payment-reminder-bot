@@ -1,0 +1,27 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "payment-reminder-bot"
+client_id = "722003b844759e135fdf3691de8e1fda"
+application_url = "https://lovely-ve-lace-constitutes.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products,read_orders,read_checkouts,write_orders,read_draft_orders,write_draft_orders"
+
+[auth]
+redirect_urls = [
+  "https://lovely-ve-lace-constitutes.trycloudflare.com/auth/callback",
+  "https://lovely-ve-lace-constitutes.trycloudflare.com/auth/shopify/callback",
+  "https://lovely-ve-lace-constitutes.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-07"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-8f002a84.myshopify.com"

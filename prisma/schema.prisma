@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id          String    @id
+  shop        String
+  state       String
+  isOnline    Boolean   @default(false)
+  scope       String?
+  expires     DateTime?
+  accessToken String
+  userId      BigInt?
+}
+
+model InvoiceStatus {
+  id             Int       @id @default(autoincrement())
+  invoicableType String
+  invoicableId   BigInt   // BIGINT type
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  version        Int
+  paid           Boolean   @default(false)
+  customMessage  String
+
+  @@unique([invoicableType, invoicableId], name: "invoicableType_invoicableId")
+  @@index([invoicableType, invoicableId], name: "invoicableType_invoicableId_idx")
+}
