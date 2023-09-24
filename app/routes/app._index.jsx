@@ -5,6 +5,7 @@ import {
   useActionData,
   useLoaderData,
   useNavigation,
+    useNavigate,
   useSubmit,
 } from "@remix-run/react";
 import {
@@ -32,6 +33,7 @@ export const loader = async ({ request }) => {
 
 const handleViewSchedule = () => {
   // Your logic for "View Schedule"
+  navigate("/app/viewSchedules");
 };
 
 const handleViewAutoSentDetails = () => {
@@ -122,6 +124,7 @@ export default function Index() {
   const { shop } = useLoaderData();
   const actionData = useActionData();
   const submit = useSubmit();
+  const navigate = useNavigate();
 
   // State for modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -140,8 +143,27 @@ export default function Index() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle the "days" value as needed, for example:
-    console.log(`Send invoice and payment link after ${days} days of pending.`);
+    fetch('/app/createSchedule', {
+      method: 'POST',
+      body: new URLSearchParams({ days: days.toString() }),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            console.error("Error:", data.error);
+            // Handle the error as needed
+          } else {
+            // Redirect to a success page or handle the result as you like.
+            console.log("Successfully created schedule:", data);
+          }
+        })
+        .catch(err => {
+          console.error("Error fetching:", err);
+        });
+
     setIsModalOpen(false);
   };
 
@@ -153,8 +175,6 @@ export default function Index() {
     ""
   );
 
-  // const draftOrderId = actionData.draftOrders?.id.replace(    "gid://shopify/DraftOrder/",
-  //   "")
 
   useEffect(() => {
     if (productId) {
@@ -232,7 +252,7 @@ export default function Index() {
                     </Frame>
                 )}
               </div>
-              <Button onClick={handleViewSchedule}>View Schedule</Button>
+              <Button onClick={() => navigate("/app/viewSchedules")}>View Schedule</Button>
               <Button onClick={handleViewAutoSentDetails}>View Auto Sent Details</Button>
             </ButtonGroup>
           </Box>
