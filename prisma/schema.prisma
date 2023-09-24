@@ -38,11 +38,13 @@ model InvoiceStatus {
 model Schedule {
   id           Int                    @id @default(autoincrement())
   objectType   String                 @default("DRAFT_ORDER") @map("object_type")
+  shop        String
   recurringDays Int                  @map("recurring_days")
   createdAt    DateTime               @default(now()) @map("created_at")
   updatedAt    DateTime               @updatedAt @map("updated_at")
 
   logs         ScheduledInvoiceSentLog[] @relation("ScheduleToLog")
+  @@unique([recurringDays, objectType, shop])
 }
 
 model ScheduledInvoiceSentLog {
