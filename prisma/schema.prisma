@@ -34,3 +34,26 @@ model InvoiceStatus {
   @@unique([invoicableType, invoicableId], name: "invoicableType_invoicableId")
   @@index([invoicableType, invoicableId], name: "invoicableType_invoicableId_idx")
 }
+
+model Schedule {
+  id           Int                    @id @default(autoincrement())
+  objectType   String                 @default("DRAFT_ORDER") @map("object_type")
+  recurringDays Int                  @map("recurring_days")
+  createdAt    DateTime               @default(now()) @map("created_at")
+  updatedAt    DateTime               @updatedAt @map("updated_at")
+
+  logs         ScheduledInvoiceSentLog[] @relation("ScheduleToLog")
+}
+
+model ScheduledInvoiceSentLog {
+  id          Int      @id @default(autoincrement())
+  scheduleId  Int      @map("schedule_id")
+  objectId    Int      @map("object_id")
+  success     Boolean
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  schedule    Schedule @relation("ScheduleToLog", fields: [scheduleId], references: [id])
+}
+
+

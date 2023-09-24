@@ -2,7 +2,7 @@
 
 name = "payment-reminder-bot"
 client_id = "722003b844759e135fdf3691de8e1fda"
-application_url = "https://lovely-ve-lace-constitutes.trycloudflare.com"
+application_url = "https://avg-dishes-playing-nose.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products,read_orders,read_checkouts,write_orders,read_draft_orde
 
 [auth]
 redirect_urls = [
-  "https://lovely-ve-lace-constitutes.trycloudflare.com/auth/callback",
-  "https://lovely-ve-lace-constitutes.trycloudflare.com/auth/shopify/callback",
-  "https://lovely-ve-lace-constitutes.trycloudflare.com/api/auth/callback"
+  "https://avg-dishes-playing-nose.trycloudflare.com/auth/callback",
+  "https://avg-dishes-playing-nose.trycloudflare.com/auth/shopify/callback",
+  "https://avg-dishes-playing-nose.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
