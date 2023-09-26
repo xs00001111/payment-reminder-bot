@@ -35,6 +35,7 @@
     "graphql": "^16.8.0",
     "isbot": "latest",
     "node-cron": "^3.0.2",
+    "node-fetch": "^3.3.2",
     "prisma": "^4.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

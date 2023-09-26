@@ -2,7 +2,7 @@
 
 name = "payment-reminder-bot"
 client_id = "722003b844759e135fdf3691de8e1fda"
-application_url = "https://arab-university-yale-traveling.trycloudflare.com"
+application_url = "https://exclusively-accuracy-particle-computers.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products,read_orders,read_checkouts,write_orders,read_draft_orde
 
 [auth]
 redirect_urls = [
-  "https://arab-university-yale-traveling.trycloudflare.com/auth/callback",
-  "https://arab-university-yale-traveling.trycloudflare.com/auth/shopify/callback",
-  "https://arab-university-yale-traveling.trycloudflare.com/api/auth/callback"
+  "https://exclusively-accuracy-particle-computers.trycloudflare.com/auth/callback",
+  "https://exclusively-accuracy-particle-computers.trycloudflare.com/auth/shopify/callback",
+  "https://exclusively-accuracy-particle-computers.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
