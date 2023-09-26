@@ -2,7 +2,7 @@
 
 name = "payment-reminder-bot"
 client_id = "722003b844759e135fdf3691de8e1fda"
-application_url = "https://dig-cyber-symphony-monster.trycloudflare.com"
+application_url = "https://raymond-alternate-pilot-lie.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products,read_orders,read_checkouts,write_orders,read_draft_orde
 
 [auth]
 redirect_urls = [
-  "https://dig-cyber-symphony-monster.trycloudflare.com/auth/callback",
-  "https://dig-cyber-symphony-monster.trycloudflare.com/auth/shopify/callback",
-  "https://dig-cyber-symphony-monster.trycloudflare.com/api/auth/callback"
+  "https://raymond-alternate-pilot-lie.trycloudflare.com/auth/callback",
+  "https://raymond-alternate-pilot-lie.trycloudflare.com/auth/shopify/callback",
+  "https://raymond-alternate-pilot-lie.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

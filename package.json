@@ -15,7 +15,8 @@
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "shopify": "shopify",
     "prisma": "prisma",
-    "setup": "prisma generate && prisma migrate deploy"
+    "setup": "prisma generate && prisma migrate deploy",
+    "runJobs": "node jobs/sendInvoices.job.js"
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",
@@ -33,6 +34,7 @@
     "cross-env": "^7.0.3",
     "graphql": "^16.8.0",
     "isbot": "latest",
+    "node-cron": "^3.0.2",
     "prisma": "^4.13.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
