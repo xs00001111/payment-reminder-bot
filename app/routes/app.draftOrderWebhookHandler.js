@@ -1,10 +1,20 @@
-import { PrismaClient } from '@prisma/client'; // Adjust the path based on your setup
+import { PrismaClient } from '@prisma/client';
+import {LoaderFunction} from "@remix-run/node"; // Adjust the path based on your setup
 
-export let action = async ({ request }) => {
+export let loader: LoaderFunction = ({ request }) => {
+    if (request.method === 'GET') {
+        return {
+            status: 405, // Method Not Allowed
+            data: { message: 'GET method not allowed.' }
+        };
+    }
+};
+
+export let action: LoaderFunction = async ({ request }) => {
     if (request.method !== 'POST') {
         return new Response("Invalid method", { status: 405 });
     }
-    const prisma = new PrismaClient();
+
     const requestBody = await request.text();
 
     // TODO: Verify webhook integrity if required
@@ -14,8 +24,10 @@ export let action = async ({ request }) => {
     // Extract the draft order ID (assuming the payload structure here)
     const draftOrderId = payload.id;
 
+    const prisma = new PrismaClient();
+
     // Save it in the database
-    await prisma.DraftOrder.create({
+    await prisma.draftOrder.create({
         data: {
             orderId: draftOrderId.toString()
         }
