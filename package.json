@@ -16,7 +16,7 @@
     "shopify": "shopify",
     "prisma": "prisma",
     "setup": "prisma generate && prisma migrate deploy",
-    "runJobs": "node jobs/sendInvoices.job.js"
+    "runJobs": "node jobs/sendInvoices.job.jsx"
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",

@@ -58,4 +58,11 @@ model ScheduledInvoiceSentLog {
   schedule    Schedule @relation("ScheduleToLog", fields: [scheduleId], references: [id])
 }
 
+model DraftOrder {
+  id        Int      @id @default(autoincrement())
+  orderId   String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
 
